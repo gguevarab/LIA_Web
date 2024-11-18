@@ -1,0 +1,53 @@
+/* Navbar.css */
+.navbar-global {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #6320EE; /* Purple background color */
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  padding: 0.5rem;
+  font-size: 3rem;
+  font-family: "Lucida Handwriting", cursive;
+  font-weight: bold; /* Adjust font if needed */
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: medium;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-links a:hover {
+  color: #ddd; /* Lighter color on hover */
+}
+
+.navbar-button {
+  padding: 1rem 1.5rem;
+  background-color: white;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.navbar-button:hover {
+  background-color: #f0f0f0; /* Slight gray on hover */
+}

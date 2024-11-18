@@ -1,0 +1,71 @@
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar-logo-menu {
+    font-size: 1.5rem;
+    font-family: 'Cursive', sans-serif;
+  }
+  
+  .navbar-links-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .navbar-links-menu a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  
+  .navbar-links-menu a:hover {
+    color: #fff;
+  }
+  
+  .navbar-button-menu {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    color: #1e1e1e;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .navbar-button-menu:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .navbar-profile-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .profile-icon-menu {
+    font-size: 1.5rem;
+    background-color: #333;
+    color: #ccc;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .profile-name-menu {
+    color: #ccc;
+    font-size: 1rem;
+  }
+  
+  .profile-name-menu:hover {
+    color: #fff;
+  }
+  

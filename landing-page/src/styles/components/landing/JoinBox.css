@@ -1,0 +1,44 @@
+.join-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d3d3d3; /* Light gray background similar to the image */
+    padding: 20%;
+    border-radius: 10px;
+    height: 80vh;
+  }
+
+  .join-button-box {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+  }
+  
+  .join-text h1 {
+    font-size: 4rem;
+    color: #8075FF; /* Light purple color */
+    font-style: italic;
+    margin: 0;
+  }
+  
+  .join-text p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000; /* Black text color */
+    margin: 10px 0 0 0;
+  }
+  
+  .join-button {
+    background-color: #6320EE; /* Purple button color */
+    color: white;
+    font-size: 2rem;
+    padding: 30px 70px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .join-button:hover {
+    background-color: #5a20b8; /* Slightly darker purple on hover */
+  }
+  

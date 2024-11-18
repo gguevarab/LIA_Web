@@ -1,0 +1,126 @@
+/* Login.css */
+.login-container {
+    display: flex;
+    height: 100vh;
+    color: white;
+  }
+  
+  .login-illustration {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+  }
+  
+  .login-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #1e1e1e;
+    color: white;
+  }
+  
+  .login-title {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 0.3rem;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 4px;
+    border: none;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+  }
+  
+  .forgot-password {
+    position: absolute;
+    right: 0;
+    top: 2.5rem;
+    font-size: 0.8rem;
+    color: #888;
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover {
+    color: #fff;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1e1e1e;
+    background-color: #ddd;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #bbb;
+  }
+  
+  .social-text {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+  }
+  
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .social-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .social-button.google {
+    background-color: #4285f4;
+  }
+  
+  .social-button.facebook {
+    background-color: #3b5998;
+  }
+  
+  .register-text {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+  }
+  
+  .register-text a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  
