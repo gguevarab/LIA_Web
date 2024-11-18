@@ -10,7 +10,7 @@ function NavbarMenu() {
   };
   return (
     <nav className="navbar-menu">
-      <div className="navbar-logo-menu">LIA</div>
+      <div className="navbar-logo-menu" onClick={handleRedirect}>LIA</div>
       <div className="navbar-links-menu">
         <a href="#planes">Planes</a>
         <a href="#soporte">Soporte</a>

@@ -5,6 +5,8 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Menu from './pages/Menu';
 import Upload from './pages/Upload';
+import Book from './pages/Book';
+import Generation from './pages/Generation';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/menu/upload" element={<Upload />} />
+          <Route path="/menu/book/:name" element={<Book />} />
+          <Route path="/menu/book/:name/:title" element={<Generation />} />
           <Route path="*" element={<Landing />} />
         </Routes>
       </div>

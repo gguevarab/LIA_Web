@@ -1,15 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import '../../styles/components/upload/Markdown.css';
+import { getGeneration } from '../../services/flaskAPI';
 
-function MarkdownComponent({ data }) {
+function MarkdownComponent() {
   const [currentCard, setCurrentCard] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [flashcards, setFlashcards] = useState([]);
+  const [generation, setGeneration] = useState('');
+  const [isflashcards, setIsFlashed] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const { name, title } = useParams();
+
+  useEffect(() => {
+    const fetchGeneration = async () => {
+      const response = await getGeneration(name, title);
+      setGeneration(response.data);
+    };
+    fetchGeneration();
+    const queryParams = new URLSearchParams(location.search);
+    if (queryParams.get('isflashcards') === 'true') {
+      setIsFlashed(true);
+    }
+    if (isflashcards) {
+      translateFlashcards();
+    }
+    console.log(isflashcards);
+  }, [name, title, generation]);
 
   const handleRedirectMenu = () => {
     navigate(-1);
@@ -17,7 +38,7 @@ function MarkdownComponent({ data }) {
 
   const translateFlashcards = () => {
     try {
-      const content = data.text;
+      const content = generation;
       const lines = content.split('\n').filter((line) => line.trim() !== '');
       const flashcardsArray = lines.map((line) => {
         const parts = line.split(':');
@@ -32,12 +53,6 @@ function MarkdownComponent({ data }) {
       console.error('Error generating flashcards:', error);
     }
   };
-
-  useEffect(() => {
-    if (data.isflashcards) {
-      translateFlashcards();
-    }
-  }, [data.isflashcards, data.text]);
 
   const handleNext = () => {
     if (flashcards.length > 0) {
@@ -61,8 +76,8 @@ function MarkdownComponent({ data }) {
         <FaArrowLeft className="back-icon" />
         Regresar
       </button>
-      <h1>{data.name}</h1>
-      {data.isflashcards ? (
+      <h1>{title}</h1>
+      {isflashcards ? (
         flashcards.length > 0 ? (
           <div>
             <div
@@ -88,7 +103,7 @@ function MarkdownComponent({ data }) {
         )
       ) : (
         <div className="markdown-content">
-          <ReactMarkdown>{data.text}</ReactMarkdown>
+          <ReactMarkdown>{generation}</ReactMarkdown>
         </div>
       )}
     </div>

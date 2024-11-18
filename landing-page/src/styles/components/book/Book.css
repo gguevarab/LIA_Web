@@ -1,0 +1,62 @@
+.container {
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  .formSection {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .select {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .materialList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .materialCard {
+    background-color: #6c63ff;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  .materialCard h2 {
+    text-align: left;
+    margin: 5 0 5px 0;
+    color: white;
+  }
+  
+  .materialCard p {
+    margin: 0 0 10px 0;
+  }
+  
+  .materialCard span {
+    font-size: 0.9rem;
+    color: #ddd;
+  }
+  
