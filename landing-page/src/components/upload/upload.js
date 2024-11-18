@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { FaArrowLeft, FaUpload } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { addMaterial, addGeneration } from '../../services/flaskAPI'
+import LoadingScreen from '../global/loading'
 import '../../styles/components/upload/Upload.css'
 
 function UploadComponent() {
@@ -12,6 +13,7 @@ function UploadComponent() {
     const [materialName, setMaterialName] = useState('');
     const [description, setDescription] = useState('');
     const [bookName, setBookName] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleUploadClick = () => {
         fileInputRef.current.click();
@@ -29,6 +31,7 @@ function UploadComponent() {
     };
 
     const handleRedirectUpload = async () => {
+        setIsLoading(true);
         await addMaterial(bookName, selectedFile);
         const data = {
             title: materialName,
@@ -99,6 +102,8 @@ function UploadComponent() {
             </div>
 
             <button className="generate-button" onClick={handleRedirectUpload}>Generar</button>
+
+            {isLoading && <LoadingScreen />}
                     
         </div>
     )
