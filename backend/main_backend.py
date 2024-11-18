@@ -22,3 +22,7 @@ app.register_blueprint(generations_bp)
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
+    # If generations folder doesn't exist, create one
+    if not os.path.exists('content'):
+        os.makedirs('content')

@@ -19,7 +19,7 @@ function App() {
           <Route path="/menu/upload" element={<Upload />} />
           <Route path="/menu/book/:name" element={<Book />} />
           <Route path="/menu/book/:name/:title" element={<Generation />} />
-          <Route path="*" element={<Landing />} />
+          <Route path="*" element={<Menu />} />
         </Routes>
       </div>
     </Router>
