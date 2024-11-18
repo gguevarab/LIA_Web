@@ -1,8 +1,10 @@
 .markdown-container {
     color: white;
-    margin: 10vh;
-    padding-left: 20%;
-    padding-right: 20%; 
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 80%
 }
 
 .back-button {
@@ -33,9 +35,9 @@
     line-height: 1.6;
     padding: 20px;
     background-color: #333;
+    max-width: 80%;
     border-radius: 8px;
-    max-width: 800px;
-    margin: 0 auto;
+    padding: 5rem;
   }
   
   /* Heading styles */
