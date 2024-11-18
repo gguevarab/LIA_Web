@@ -22,3 +22,7 @@ landing-page/.env.production.local
 landing-page/npm-debug.log*
 landing-page/yarn-debug.log*
 landing-page/yarn-error.log*
+
+# backend
+backend/material
+backend/.env
