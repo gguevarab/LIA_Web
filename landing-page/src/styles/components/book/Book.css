@@ -39,8 +39,8 @@
   }
   
   .materialCard {
-    background-color: #6c63ff;
-    padding: 20px;
+    background-color: #2b2861;
+    padding: 2rem;
     border-radius: 10px;
     color: white;
   }
@@ -58,5 +58,17 @@
   .materialCard span {
     font-size: 0.9rem;
     color: #ddd;
+  }
+
+  .popup {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 5rem;
+  }
+
+  .popup h2 {
+    color: white;
   }
   

@@ -15,13 +15,13 @@ client = OpenAI(
 
 generations_bp = Blueprint('generations', __name__)
 prompts = {
-    "test": "Please make a practice test of the following text. The test should be perfectly formated for markdown reading with nice aesthetics and it should contains different types of problems (multiple choice, open, etc). Please add at the end the answers: ",
-    "summary": "Please summarize the following text. The summary should be perfectly formated for markdown reading with nice aesthetics: ",
-    "eli": "Please ELI5 the following text. The ELI5 should be perfectly formated for markdown reading with nice aesthetics: ",
-    "flashcards": "Generate a list of 20 key terms and definitions based on the following text. Each key term should be followed by its definition.\nONLY KEY TERMS AND CONCPETS YOU DEEM AS IMPORTANT AND CAN HELP THE STUDENT LEARN. It should come in the following format: term: definition \n"
+    "Test": "Please make a practice test of the following text. The test should be perfectly formated for markdown reading with nice aesthetics and it should contains different types of problems (multiple choice, open, etc). Please add at the end the answers: ",
+    "Summary": "Please summarize the following text. The summary should be perfectly formated for markdown reading with nice aesthetics: ",
+    "ELI5": "Please ELI5 the following text. The ELI5 should be perfectly formated for markdown reading with nice aesthetics: ",
+    "Flashcards": "Generate a list of 20 key terms and definitions based on the following text. Each key term should be followed by its definition.\nONLY KEY TERMS AND CONCPETS YOU DEEM AS IMPORTANT AND CAN HELP THE STUDENT LEARN. It should come in the following format: term: definition \n"
 }
 
-def append_metadata(name, title, description, isFlashcards):
+def append_metadata(name, title, description, isFlashcards, type):
     metadata_path = f'content/{name}/metadata.json'
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     if not os.path.exists(metadata_path):
@@ -36,7 +36,7 @@ def append_metadata(name, title, description, isFlashcards):
     next_index = len(data) if data else 0
 
     # Append the new metadata
-    data.append({"index": next_index, "title": title, "date": now, "description": description, "isflashcards": isFlashcards})
+    data.append({"index": next_index, "title": title, "date": now, "description": description, "isflashcards": isFlashcards, "type": type})
 
     # Write the updated content back to the file
     with open(metadata_path, 'w', encoding='utf-8') as f:
@@ -60,10 +60,10 @@ def add_generation(name):
 
     title = data['title']
     description = data['description']
-    prompt = data['prompt']
+    prompt_temp = data['prompt']
     isflashcards = data['isflashcards']
 
-    prompt = prompts[prompt]
+    prompt = prompts[prompt_temp]
 
     response = None 
 
@@ -102,7 +102,7 @@ def add_generation(name):
     with open(f'content/{name}/generations/{title}.md', 'w', encoding='utf-8') as f:
         f.write(generation)
 
-    append_metadata(name, title, description, data['isflashcards'])
+    append_metadata(name, title, description, data['isflashcards'], prompt_temp)
 
     return jsonify({"message": f"Generation {title} created"}), 201
 

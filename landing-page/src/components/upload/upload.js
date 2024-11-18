@@ -7,12 +7,10 @@ import '../../styles/components/upload/Upload.css'
 function UploadComponent() {
     const navigate = useNavigate();
     const fileInputRef = useRef(null);
-    const [prompt, setPrompt] = useState('test'); 
+    const [prompt, setPrompt] = useState('Test'); 
     const [selectedFile, setSelectedFile] = useState(null);
-    const [isUploaded, setIsUploaded] = useState(false);
     const [materialName, setMaterialName] = useState('');
     const [description, setDescription] = useState('');
-    const [isflashcards, setIsFlashcards] = useState(false);
     const [bookName, setBookName] = useState('');
 
     const handleUploadClick = () => {
@@ -31,8 +29,7 @@ function UploadComponent() {
     };
 
     const handleRedirectUpload = async () => {
-        const response = await addMaterial(bookName, selectedFile);
-        setIsUploaded(true);
+        await addMaterial(bookName, selectedFile);
         const data = {
             title: materialName,
             description: description,
@@ -43,7 +40,7 @@ function UploadComponent() {
         await addGeneration(bookName, data)
           .then((response) => {
             console.log("Success:", response.data);
-            navigate(`/menu/book/${bookName}/${materialName}?isflashcards=${isflashcards}`);
+            navigate(`/menu/book/${bookName}/${materialName}?isflashcards=${prompt === 'flashcards'}`);
           })
           .catch((error) => {
             console.error("Error:", error.response?.data || error.message);
@@ -94,10 +91,10 @@ function UploadComponent() {
 
             <div className="dropdown">
                 <select className="dropdown-select" value={prompt} onChange={(e) => setPrompt(e.target.value)}>
-                    <option value="test">Test de practica</option>
-                    <option value="summary">Resumen</option>
-                    <option value="eli">ELI5</option>
-                    <option value="flashcards">Flashcards</option>
+                    <option value="Test">Test de practica</option>
+                    <option value="Summary">Resumen</option>
+                    <option value="ELI5">ELI5</option>
+                    <option value="Flashcards">Flashcards</option>
                 </select>
             </div>
 
