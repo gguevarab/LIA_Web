@@ -54,6 +54,17 @@
     color: white;
     font-size: 1rem;
   }
+
+  .large-input-field {
+    width: 300px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #888;
+    border-radius: 8px;
+    background-color: #1e1e1e;
+    color: white;
+    font-size: 1rem;
+  }
   
   .dropdown {
     width: 300px;

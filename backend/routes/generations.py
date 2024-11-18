@@ -14,8 +14,14 @@ client = OpenAI(
     )
 
 generations_bp = Blueprint('generations', __name__)
+prompts = {
+    "test": "Please make a practice test of the following text. The test should be perfectly formated for markdown reading with nice aesthetics and it should contains different types of problems (multiple choice, open, etc). Please add at the end the answers: ",
+    "summary": "Please summarize the following text. The summary should be perfectly formated for markdown reading with nice aesthetics: ",
+    "eli": "Please ELI5 the following text. The ELI5 should be perfectly formated for markdown reading with nice aesthetics: ",
+    "flashcards": "Generate a list of 20 key terms and definitions based on the following text. Each key term should be followed by its definition.\nONLY KEY TERMS AND CONCPETS YOU DEEM AS IMPORTANT AND CAN HELP THE STUDENT LEARN. It should come in the following format: term: definition \n"
+}
 
-def append_metadata(name, title, prompt, isFlashcards):
+def append_metadata(name, title, description, isFlashcards):
     metadata_path = f'content/{name}/metadata.json'
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     if not os.path.exists(metadata_path):
@@ -30,7 +36,7 @@ def append_metadata(name, title, prompt, isFlashcards):
     next_index = len(data) if data else 0
 
     # Append the new metadata
-    data.append({"index": next_index, "title": title, "date": now, "description": prompt, "isflashcards": isFlashcards})
+    data.append({"index": next_index, "title": title, "date": now, "description": description, "isflashcards": isFlashcards})
 
     # Write the updated content back to the file
     with open(metadata_path, 'w', encoding='utf-8') as f:
@@ -53,10 +59,13 @@ def add_generation(name):
     data = request.get_json()
 
     title = data['title']
+    description = data['description']
     prompt = data['prompt']
     isflashcards = data['isflashcards']
 
-    response = None
+    prompt = prompts[prompt]
+
+    response = None 
 
     if isflashcards:
         response = client.chat.completions.create(
@@ -64,7 +73,7 @@ def add_generation(name):
             messages=[
                 {
                     "role": "system", 
-                    "content": 'You are a helpful assistant. You will not engage in any conversation with the user outside of generating flashcards. You will output the exact format as requested. You will not output anything else. Not even a "Sure thing" or anything similar. Just the precise format of the flashcards. Everything will be in plain text, so no markdown format. Your objective is to make flashcards so students can review important concepts. So do your best.'
+                    "content": 'You are a helpful flashcard maker. You will not engage in any conversation with the user outside of generating flashcards. You will output the exact format as requested. You will not output anything else. Not even a "Sure thing" or anything similar. Just the precise format of the flashcards. Everything will be in plain text, so no markdown format. Your objective is to make flashcards so students can review important concepts. So do your best.'
                 },
                 {
                     "role": "user", 
@@ -93,7 +102,7 @@ def add_generation(name):
     with open(f'content/{name}/generations/{title}.md', 'w', encoding='utf-8') as f:
         f.write(generation)
 
-    append_metadata(name, title, prompt, data['isflashcards'])
+    append_metadata(name, title, description, data['isflashcards'])
 
     return jsonify({"message": f"Generation {title} created"}), 201
 
