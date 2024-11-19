@@ -17,13 +17,13 @@ const Popup = ({ onClose, children }) => {
             title: materialName,
             description: description,
             prompt: prompt,
-            isflashcards: prompt === 'flashcards'
+            isflashcards: prompt === 'Flashcards'
         }
         console.log(data);
         await addGeneration(name, data)
           .then((response) => {
             console.log("Success:", response.data);
-            navigate(`/menu/book/${name}/${materialName}?isflashcards=${prompt === 'flashcards'}`);
+            navigate(`/menu/book/${name}/${materialName}?isflashcards=${prompt === 'Flashcards'}`);
           })
           .catch((error) => {
             console.error("Error:", error.response?.data || error.message);
@@ -49,10 +49,10 @@ const Popup = ({ onClose, children }) => {
                 />
                 <div className="dropdown">
                     <select className="dropdown-select" value={prompt} onChange={(e) => setPrompt(e.target.value)}>
-                        <option value="test">Test de practica</option>
-                        <option value="summary">Resumen</option>
-                        <option value="eli">ELI5</option>
-                        <option value="flashcards">Flashcards</option>
+                        <option value="Test">Test de practica</option>
+                        <option value="Summary">Resumen</option>
+                        <option value="ELI5">ELI5</option>
+                        <option value="Flashcards">Flashcards</option>
                     </select>
                 </div>
                 {children}
