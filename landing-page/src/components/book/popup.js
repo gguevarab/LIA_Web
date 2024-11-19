@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { addGeneration } from "../../services/flaskAPI";
 import { useNavigate, useParams } from "react-router-dom";
+import LoadingScreen from '../global/loading'
 import '../../styles/components/book/Popup.css'
 
 const Popup = ({ onClose, children }) => {
 
     const [materialName, setMaterialName] = useState('');
     const [description, setDescription] = useState('');
-    const [prompt, setPrompt] = useState('');
+    const [prompt, setPrompt] = useState('Test');
+    const [isLoading, setIsLoading] = useState(false);
     const { name } = useParams();
 
     const navigate = useNavigate();
 
     const handleRedirectUpload = async () => {
+        setIsLoading(true);
         const data = {
             title: materialName,
             description: description,
@@ -58,6 +61,7 @@ const Popup = ({ onClose, children }) => {
                 {children}
                 <button className="generate-button" onClick={handleRedirectUpload}>Generar</button>
             </div>
+            {isLoading && <LoadingScreen />}
         </div>
     );
 }

@@ -1,7 +1,7 @@
 .material-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 5rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
     padding-top: 10rem;
     padding-bottom: 10rem;
     padding-left: 20%;
@@ -12,7 +12,7 @@
     background-color: #8b5cf6; /* Purple color for material cards */
     color: white;
     border-radius: 20px;
-    padding: 1rem;
+    padding: 20px;
     position: relative;
     display: flex;
     flex-direction: column;
